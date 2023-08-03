@@ -1,0 +1,22 @@
+#
+# CreeperTGControl v1.0 by CreeperStudio (LEDev)
+#
+#             vk.com/creeper_studio
+#           vk.com/leokrech | ledev.ru
+#
+#       Спасибо за то, что выбрали нас! =)
+#
+
+# Имя пользователя и токен бота получаются при регистрации бота через https://t.me/BotFather
+bot-username: "USERNAME"
+bot-token: "TOKEN"
+
+# Отправлять админам сообщение о запуске сервера?
+server-start-msg: true
+
+# Отправлять админам сообщение о выключении сервера?
+server-stop-msg: true
+
+# Чтобы получить ID админа достаточно после запуска сервера написать боту любое сообщение
+admins-ids:
+  - 1316711883 # Ваш ID (это айди разработчика)

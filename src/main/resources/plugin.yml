@@ -1,0 +1,17 @@
+name: CreeperTGControl
+version: '${project.version}'
+main: ru.ledev.creepertgcontrol.CreeperTGControl
+authors: [LEDev, CreeperStudio]
+description: Plugin for server administration via Telegram bot
+website: https://vk.com/creeper_studio
+
+commands:
+  creepertgcontrol:
+    description: "CreeperTGControl plugin command"
+    permission: creepertgcontrol.admin
+    aliases:
+      - tgcontrol
+
+permissions:
+  creepertgcontrol.admin:
+    description: "Perm for use plugin command"
