@@ -9,7 +9,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.ledev.creepertgcontrol.bot.Bot;
 import ru.ledev.creepertgcontrol.bot.BotCommand;
-import ru.ledev.creepertgcontrol.utils.tps.TPSUtil;
 
 public class PlayerCommand implements BotCommand {
     @Override

@@ -13,21 +13,26 @@ public final class CreeperTGControl extends JavaPlugin {
 
     private static CreeperTGControl instance;
 
-    public Bot bot;
+    private static Bot bot;
+    private static boolean botRegistered = false;
 
     @Override
     public void onEnable() {
-
-        UptimeUtil.start();
 
         instance = this;
 
         saveDefaultConfig();
 
-        TPSUtil.startTPSTimer();
+        UptimeUtil.start();
+        TPSUtil.start();
 
         bot = new Bot(getConfig().getString("bot-username"), getConfig().getString("bot-token"));
-        registerBot();
+        if (!registerBot()) {
+            getLogger().warning("Error registering TG Bot! Goodbye!");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+        else botRegistered = true;
 
         getCommand("creepertgcontrol").setExecutor(new TGControlCmd());
         getCommand("creepertgcontrol").setTabCompleter(new TGControlCmd());
@@ -40,17 +45,19 @@ public final class CreeperTGControl extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        if (getConfig().getBoolean("server-stop-msg")) bot.sendServerStopMsg();
+        if (getConfig().getBoolean("server-stop-msg") && botRegistered) bot.sendServerStopMsg();
 
         getLogger().info("Plugin disabled!");
     }
 
-    private void registerBot() {
+    private boolean registerBot() {
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(bot);
+            return true;
         } catch (TelegramApiException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

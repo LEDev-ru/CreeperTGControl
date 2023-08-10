@@ -84,7 +84,7 @@ public class Bot extends TelegramLongPollingBot {
 
                 Server server = Bukkit.getServer();
 
-                server.dispatchCommand(server.getConsoleSender(), messageText);
+                server.getScheduler().runTask(CreeperTGControl.getInstance(), () -> server.dispatchCommand(server.getConsoleSender(), messageText));
 
                 SendMessage message = new SendMessage();
                 message.setChatId(chatID);

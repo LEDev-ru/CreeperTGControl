@@ -8,7 +8,7 @@ public class TPSTimer implements Runnable {
 
     TPSTimer() {
         this.last = System.nanoTime();
-        (this.history = new LinkedList<Double>()).add(20.0);
+        (this.history = new LinkedList<>()).add(20.0);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class TPSTimer implements Runnable {
         if (timeSpent == 0L) {
             timeSpent = 1L;
         }
-        if (this.history.size() > 10) {
+        if (this.history.size() > 6) {
             this.history.remove();
         }
         final double tps = 5.0E7 / timeSpent;
@@ -35,7 +35,6 @@ public class TPSTimer implements Runnable {
                 avg += f;
             }
         }
-        if (history.size() > 0) return avg / this.history.size();
-        return 0;
+        return avg / this.history.size();
     }
 }

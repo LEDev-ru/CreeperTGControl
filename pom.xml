@@ -6,7 +6,7 @@
 
     <groupId>ru.ledev</groupId>
     <artifactId>CreeperTGControl</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>CreeperTGControl</name>
